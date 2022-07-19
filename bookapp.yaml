@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bookapp
+  labels:
+    app: bookapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bookapp
+  template:
+    metadata:
+      labels:
+        app: bookapp
+    spec:
+      containers:
+        - name: bookapp
+          image: mishardina/bookapp-python:1.0.0
+          ports:
+            - containerPort: 5000
+          imagePullPolicy: Always
